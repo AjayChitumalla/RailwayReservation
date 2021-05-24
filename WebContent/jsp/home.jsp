@@ -14,7 +14,7 @@
 		<ul style="list-style-type: none;">
 			<br>
 			<li><a href="booking">Book a ticket</a></li><br>
-			<li><a href="">My tickets</a></li><br>
+			<li><a href="showTickets">My tickets</a></li><br>
 			<li><a href="">Cancel a ticket</a></li><br>
 		</ul>
 	</div>

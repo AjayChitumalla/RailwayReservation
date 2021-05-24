@@ -13,7 +13,7 @@
 		<%= request.getAttribute("error") %>
 		<%} %>
 		<h1>Register</h1>
-		<form action="Register" method="post">
+		<form action="register" method="post">
 		
 			<label>Username</label> <br/>
 			<input type="text" name="username" id="name"><br/>

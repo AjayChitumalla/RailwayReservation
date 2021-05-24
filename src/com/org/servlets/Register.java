@@ -25,7 +25,7 @@ public class Register extends HttpServlet{
 		String password=request.getParameter("password");
 		String repassword=request.getParameter("repassword");
 		
-		if(password.equals(repassword)) {
+		if(password.equals(repassword) && !password.isEmpty()) {
 			User user = new User();
 			user.setName(request.getParameter("username"));
 			user.setEmail(request.getParameter("email"));
@@ -39,7 +39,7 @@ public class Register extends HttpServlet{
 			user.setGender(request.getParameter("gender"));
 			user.setAddress(request.getParameter("address"));
 			user.setPassword(password);
-			
+			System.out.print(user.toString());
 			ApplicationDao dao = new ApplicationDao();
 			int isRegistered = dao.registerUser(user);
 			if(isRegistered == 0) {
@@ -47,11 +47,12 @@ public class Register extends HttpServlet{
 				request.getRequestDispatcher("/jsp/Register.jsp").forward(request, response);
 			}
 			else {
-				request.getRequestDispatcher("/jsp/Register.jsp").forward(request, response);
+				request.setAttribute("error", "Registered successfully,Please Login !!!");
+				request.getRequestDispatcher("/jsp/login.jsp").forward(request, response);
 			}
 		}
 		else {
-			request.setAttribute("error", "both the passwords should match !!!");
+			request.setAttribute("error", "both the passwords should match and password should not be empty");
 			request.getRequestDispatcher("/jsp/Register.jsp").forward(request, response);
 		}
 	}
