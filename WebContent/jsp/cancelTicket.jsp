@@ -6,8 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
+<title>Cancel Ticket</title>
 <style>
 table,tr,td,th{
 	border:1px solid black;
@@ -15,15 +14,18 @@ table,tr,td,th{
 	padding:20px
 }
 </style>
+</head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
 	<a href="home" style="margin-left: 10%">Go to Home</a>
 	<a href="logout" style="float: right;margin-right: 10%">Logout</a>
 	<div style="margin-left: 25%">
 	<h1>Your Tickets</h1>
-	<% if(request.getAttribute("error")!=null){ %>
-		<%= request.getAttribute("error") %>
-	<%} %>
+	<div style="margin-left: 25%">
+		<% if(request.getAttribute("error")!=null){ %>
+			<%= request.getAttribute("error") %>
+		<%} %>
+	</div>
 	<div>
 		<table>
 			<tr>
@@ -33,17 +35,22 @@ table,tr,td,th{
 				<th>No of seats</th>
 				<th>class</th>
 				<th>Price</th>
+				<th>Cancel</th>
 			</tr>
 		<% 	List<Ticket> tickets = (List)session.getAttribute("tickets");
 			for(int i=0;i<tickets.size();i++){ %>
 			<tr>
-				<td><%= tickets.get(i).getTicket_no() %></td>
-				<td><%= tickets.get(i).getUsername() %></td>
-				<td><%= tickets.get(i).getTrain_no() %></td>
-				<td><%= tickets.get(i).getNo_of_seats() %></td>
-				<td><%= tickets.get(i).getclass() %></td>
-				<td><%= tickets.get(i).getPrice() %></td>
-			<tr>
+				<form action="ProcessingCancellation" method="post">
+					<td><%= tickets.get(i).getTicket_no() %></td>
+					<td><%= tickets.get(i).getUsername() %></td>
+					<td><%= tickets.get(i).getTrain_no() %></td>
+					<td><%= tickets.get(i).getNo_of_seats() %></td>
+					<td><%= tickets.get(i).getclass() %></td>
+					<td><%= tickets.get(i).getPrice() %></td>
+					<input type="hidden" name="ticket_no" value=<%= tickets.get(i).getTicket_no() %>>
+					<td><button>Cancel Ticket</button></td>
+				</form>
+			</tr>
 		<%} %>
 		</table>
 	</div>

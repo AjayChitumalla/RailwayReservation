@@ -171,4 +171,19 @@ public class ApplicationDao {
 		}
 		return tickets;
 	}
+	
+	public int removeTicket(int ticket_no) {
+		int result = 0;
+		Connection connection = DbConnection.getDbconnection();
+		try {
+			PreparedStatement statement = connection.prepareStatement("delete from ticket where ticket_no=?");
+			statement.setInt(1,ticket_no);
+			result = statement.executeUpdate();
+		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+	}
 }

@@ -36,6 +36,7 @@ public class BookTicket extends HttpServlet{
 				request.getRequestDispatcher("/jsp/bookTicket.jsp").forward(request, response);
 			}
 			else {
+				request.setAttribute("error", "Successfully booked the ticket !!");
 				request.getRequestDispatcher("/showTickets").forward(request, response);
 			}
 		}
