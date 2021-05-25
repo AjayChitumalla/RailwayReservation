@@ -33,7 +33,6 @@ public class Register extends HttpServlet{
 				String dob = request.getParameter("dob");
 				user.setDob(new SimpleDateFormat("yyyy-MM-dd").parse(dob));
 			} catch (ParseException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			user.setGender(request.getParameter("gender"));
