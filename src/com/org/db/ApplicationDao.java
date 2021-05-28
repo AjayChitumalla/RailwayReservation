@@ -30,7 +30,6 @@ public class ApplicationDao {
 			rowsAffected = statement.executeUpdate();
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -48,7 +47,6 @@ public class ApplicationDao {
 			if(result.next())
 				isValid = true;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -66,7 +64,6 @@ public class ApplicationDao {
 				places.add(result.getString("destination_point"));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return places;
@@ -95,7 +92,6 @@ public class ApplicationDao {
 				trains.add(train);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return trains;
@@ -122,7 +118,6 @@ public class ApplicationDao {
 			}
 		}
 		catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return train;
@@ -141,7 +136,6 @@ public class ApplicationDao {
 			rowsAffected = statement.executeUpdate();
 		}
 		catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return rowsAffected;
@@ -166,9 +160,22 @@ public class ApplicationDao {
 			}
 		}
 		catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return tickets;
+	}
+	
+	public int removeTicket(int ticket_no) {
+		int result = 0;
+		Connection connection = DbConnection.getDbconnection();
+		try {
+			PreparedStatement statement = connection.prepareStatement("delete from ticket where ticket_no=?");
+			statement.setInt(1,ticket_no);
+			result = statement.executeUpdate();
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 }
