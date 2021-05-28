@@ -11,12 +11,10 @@ public class DbConnection {
 			Class.forName("com.mysql.jdbc.Driver");
 			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/reservation","root","ajayCh");
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			System.out.println("MySQL JDBC Driver not found !!");
 			e.printStackTrace();
 		}
 		catch (SQLException e) {
-			// TODO Auto-generated catch block
 			System.out.println("Connection to DB failed!");
 			e.printStackTrace();
 		}

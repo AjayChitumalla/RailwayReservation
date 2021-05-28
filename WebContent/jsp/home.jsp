@@ -10,12 +10,15 @@
 	<jsp:include page="header.jsp"></jsp:include>
 	<div style="margin-left:25%">
 		<h1 style="margin-left: 20%">Home Page</h1>
+		<% if(request.getAttribute("error")!=null){ %>
+			<%= request.getAttribute("error") %>
+		<%} %>
 		<a href="logout" style="float: right;margin-right: 10%">Logout</a>
 		<ul style="list-style-type: none;">
 			<br>
 			<li><a href="booking">Book a ticket</a></li><br>
-			<li><a href="">My tickets</a></li><br>
-			<li><a href="">Cancel a ticket</a></li><br>
+			<li><a href="showTickets">My tickets</a></li><br>
+			<li><a href="cancelTicket">Cancel a ticket</a></li><br>
 		</ul>
 	</div>
 </body>
